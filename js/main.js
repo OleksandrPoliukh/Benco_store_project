@@ -10,23 +10,13 @@ $(function () {
 });
 
 
-//adding products to card
+//adding products to cart
 
 const productElements = document.querySelectorAll('.product__slider-item_btn, .product__slider-name');
 productElements.forEach(productElement => {
     productElement.addEventListener('click', () => {
         productElement.classList.toggle('active');
         productElement.parentElement.children[0].classList.toggle('active');
-
-        //as alternative
-
-        // if(productElement.classList.contains('active')) {
-        //     productElement.classList.remove('active')
-        //     productElement.parentElement.children[0].classList.remove('active')
-        // } else {
-        //     productElement.classList.add('active');
-        //     productElement.parentElement.children[0].classList.add('active');
-        // }
     })
 })
 
@@ -108,10 +98,54 @@ if(today.getDay()){
 }
 
 let midnight = today.getHours()*3600000 + today.getMinutes()*60000 + today.getSeconds()*1000 + today.getMilliseconds();
-
 let newWeek = monday - midnight;
 
+const circleD = document.querySelector('.progress-ring__circle-d');
+const radiusD = circleD.r.baseVal.value;
+const circumferenceD = 2 * Math.PI * radiusD;
+circleD.style.strokeDasharray = `${circumferenceD} ${circumferenceD}`;
+circleD.style.strokeDashoffset = circumferenceD;
+
+const circleH = document.querySelector('.progress-ring__circle-h');
+const radiusH = circleH.r.baseVal.value;
+const circumferenceH = 2 * Math.PI * radiusH;
+circleH.style.strokeDasharray = `${circumferenceH} ${circumferenceH}`;
+circleH.style.strokeDashoffset = circumferenceH;
+
+const circleM = document.querySelector('.progress-ring__circle-m');
+const radiusM = circleM.r.baseVal.value;
+const circumferenceM = 2 * Math.PI * radiusM;
+circleM.style.strokeDasharray = `${circumferenceM} ${circumferenceM}`;
+circleM.style.strokeDashoffset = circumferenceM;
+
+const circleS = document.querySelector('.progress-ring__circle-s');
+const radiusS = circleS.r.baseVal.value;
+const circumferenceS = 2 * Math.PI * radiusS;
+circleS.style.strokeDasharray = `${circumferenceS} ${circumferenceS}`;
+circleS.style.strokeDashoffset = circumferenceS;
+
+function setProgressD(percent) {
+    const offset = circumferenceD - percent / 100 * circumferenceD;
+    circleD.style.strokeDashoffset = offset;
+}
+
+function setProgressH(percent) {
+    const offset = circumferenceH - percent / 100 * circumferenceH;
+    circleH.style.strokeDashoffset = offset;
+}
+
+function setProgressM(percent) {
+    const offset = circumferenceM - percent / 100 * circumferenceM;
+    circleM.style.strokeDashoffset = offset;
+}
+
+function setProgressS(percent) {
+    const offset = circumferenceS - percent / 100 * circumferenceS;
+    circleS.style.strokeDashoffset = offset;
+}
+
 function countdownTimer() {
+
     const rightNow = Date.now();
 
     const gap = newWeek - rightNow;
@@ -126,22 +160,15 @@ function countdownTimer() {
     min.innerHTML = m < 10 ? "0" + m : m;
     sec.innerHTML = s < 10 ? "0" + s : s;
 
-    let seco = ( ( 100 / 60 ) * s)
-    let ss = Math.round(seco);
-
-    let mino = ( ( 100 / 60 ) * m)
-    let mm = Math.round(mino);
-
-    let hore = ( ( 100 / 60 ) * h)
-    let hh = Math.round(hore);
-
-    let deno = ( ( 100 / 60 ) * d)
-    let dd = Math.round(deno);
-
-    sec.style.background = `conic-gradient( rgba(255, 255, 255, 0.2) 0 ${ss}% , #ffffff00 ${ss}% 100%)`;
-    min.style.background = `conic-gradient( rgba(255, 255, 255, 0.2) 0 ${mm}% , #ffffff00 ${mm}% 100%)`;
-    hrs.style.background = `conic-gradient( rgba(255, 255, 255, 0.2) 0 ${hh}% , #ffffff00 ${hh}% 100%)`;
-    day.style.background = `conic-gradient( rgba(255, 255, 255, 0.2) 0 ${dd}% , #ffffff00 ${dd}% 100%)`;
+    const daysPercent = ( ( 100 / 7 ) * d)
+    const hoursPercent = ( ( 100 / 24 ) * h)
+    const minutesPercent = ( ( 100 / 60 ) * m)
+    const secondsPercent = ( ( 100 / 60 ) * s)
+    
+    setProgressD(daysPercent);
+    setProgressH(hoursPercent);
+    setProgressM(minutesPercent);
+    setProgressS(secondsPercent);
 }
 
 setInterval(countdownTimer, 1000);

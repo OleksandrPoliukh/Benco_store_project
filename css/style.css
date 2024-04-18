@@ -120,6 +120,22 @@ h3 {
     transition-delay: 100ms;
 }
 
+.deals__bgimg a {
+    width: 200px;
+    height: 50px;
+    padding: 11px;
+}
+
+.product__slider-item_btn {
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 22px;
+    box-shadow: none;
+    color: #34383D;
+    padding: 14px;
+}
+
 .header__info-right a:hover {
     background-color: #CDA861;
     border: 3px solid #8b7140;
@@ -150,7 +166,6 @@ h3 {
     background-color: #efa316;
     border: 3px solid #8b7140;
 }
-
 
 .header__title {
     display: flex;
@@ -399,10 +414,6 @@ h1 span {
     line-height: 21px;
 }
 
-.product__slider-item_btn {
-    color: #34383D;
-}
-
 .slick-arrow {
     border: none;
     background: none;
@@ -427,7 +438,6 @@ h1 span {
     width: 25px;
     height: 25px;
 }
-
 
 .slick-next::before {
     content: '';
@@ -494,6 +504,25 @@ h1 span {
     align-items: center;
 }
 
+.progress-ring__wrapper {
+    position: absolute;
+    top: -1.95px;
+}
+
+.progress-ring {
+    border-radius: 50%;
+}
+
+.progress-ring__circle-d,
+.progress-ring__circle-h,
+.progress-ring__circle-m,
+.progress-ring__circle-s {
+    transform-origin: center;
+    transform: rotate(-90deg);
+    transition: stroke-dashoffset 0.5s;
+    filter: drop-shadow(0 -4px 4px rgba(0, 0, 0, 0.25));
+}
+
 .timer__item,
 .clock {
     display: flex;
@@ -511,23 +540,16 @@ h1 span {
 .timer__item {
     width: 66px;
     height: 66px;
-    border: 1px solid white;
-    background: conic-gradient( #a62525c2 0 0% , #ffffff00 0% 100%);
-}
-
-.clock {
-    width: 66px;
-    height: 66px;
-}
-
-.deals__timer-wrapper {
-    text-align: center;
+    border: 1px solid #F3E9E9;
+    position: relative;
 }
 
 .timer-dscr {
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     line-height: 20px;
     font-style: italic;
+    font-weight: 600;
 }
 
 .spec {
@@ -818,15 +840,12 @@ h1 span {
     color: rgb(52, 56, 61);
 }
 
-
 .main__footer-right {
     width: 453px;
     display: flex;
     justify-content: space-between;
     color: rgb(52, 56, 61);
 }
-
-
 
 .main__footer-right_list li {
     display: block;
@@ -852,8 +871,6 @@ h1 span {
 .main__footer-right_list a:hover {
     border-bottom: 3px solid black;
 }
-
-
 
 .footer__title {
     font-family: 'Montserrat', sans-serif;

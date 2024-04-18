@@ -110,7 +110,7 @@
                         <div class="product__slider-item_dsc">
                             Lorem ipsum dolor, sit amet consectetur adipisicing.
                         </div>
-                        <a href="#product" class="product__slider-item_btn">Add to card</a>
+                        <a href="#product" class="product__slider-item_btn">Add to Cart</a>
                     </div>
                 </div>
                 <div>
@@ -145,7 +145,7 @@
                         <div class="product__slider-item_dsc">
                             Lorem ipsum dolor, sit amet consectetur adipisicing.
                         </div>
-                        <a href="#product" class="product__slider-item_btn">Add to card</a>
+                        <a href="#product" class="product__slider-item_btn">Add to Cart</a>
                     </div>
                 </div>
                 <div>
@@ -180,7 +180,7 @@
                         <div class="product__slider-item_dsc">
                             Lorem ipsum dolor, sit amet consectetur adipisicing.
                         </div>
-                        <a href="#product" class="product__slider-item_btn">Add to card</a>
+                        <a href="#product" class="product__slider-item_btn">Add to Cart</a>
                     </div>
                 </div>
                 <div>
@@ -215,7 +215,7 @@
                         <div class="product__slider-item_dsc">
                             Lorem ipsum dolor, sit amet consectetur adipisicing.
                         </div>
-                        <a href="#product" class="product__slider-item_btn">Add to card</a>
+                        <a href="#product" class="product__slider-item_btn">Add to Cart</a>
                     </div>
                 </div>
                 <div>
@@ -250,7 +250,7 @@
                         <div class="product__slider-item_dsc">
                             Lorem ipsum dolor, sit amet consectetur adipisicing.
                         </div>
-                        <a href="#product" class="product__slider-item_btn">Add to card</a>
+                        <a href="#product" class="product__slider-item_btn">Add to Cart</a>
                     </div>
                 </div>
                 <div>
@@ -285,7 +285,7 @@
                         <div class="product__slider-item_dsc">
                             Lorem ipsum dolor, sit amet consectetur adipisicing.
                         </div>
-                        <a href="#product" class="product__slider-item_btn">Add to card</a>
+                        <a href="#product" class="product__slider-item_btn">Add to Cart</a>
                     </div>
                 </div>
                 <div>
@@ -320,7 +320,7 @@
                         <div class="product__slider-item_dsc">
                             Lorem ipsum dolor, sit amet consectetur adipisicing.
                         </div>
-                        <a href="#product" class="product__slider-item_btn">Add to card</a>
+                        <a href="#product" class="product__slider-item_btn">Add to Cart</a>
                     </div>
                 </div>
                 <div>
@@ -355,7 +355,7 @@
                         <div class="product__slider-item_dsc">
                             Lorem ipsum dolor, sit amet consectetur adipisicing.
                         </div>
-                        <a href="#product" class="product__slider-item_btn">Add to card</a>
+                        <a href="#product" class="product__slider-item_btn">Add to Cart</a>
                     </div>
                 </div>
                 <div>
@@ -390,7 +390,7 @@
                         <div class="product__slider-item_dsc">
                             Lorem ipsum dolor, sit amet consectetur adipisicing.
                         </div>
-                        <a href="#product" class="product__slider-item_btn">Add to card</a>
+                        <a href="#product" class="product__slider-item_btn">Add to Cart</a>
                     </div>
                 </div>
                 <div>
@@ -425,7 +425,7 @@
                         <div class="product__slider-item_dsc">
                             Lorem ipsum dolor, sit amet consectetur adipisicing.
                         </div>
-                        <a href="#product" class="product__slider-item_btn">Add to card</a>
+                        <a href="#product" class="product__slider-item_btn">Add to Cart</a>
                     </div>
                 </div>
             </div>
@@ -439,26 +439,46 @@
                 <h2 class="section__title">Special deals for this week</h2>
                 <div class="deals__timer">
                     <div class="deals__timer-wrapper">
-                        <div class="deals__d timer__item" >
+                        <div class="timer__item">
                             <div class="clock" id="day">00</div>
+                            <div class="progress-ring__wrapper">
+                                <svg class="progress-ring" width="68" height="68">
+                                    <circle class="progress-ring__circle-d" stroke="white" stroke-width="2" cx="34" cy="34" r="33" fill="transparent" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="timer-dscr">Days</div>
                     </div>
                     <div class="deals__timer-wrapper">
-                        <div class="deals__h timer__item" >
+                        <div class="timer__item">
                             <div class="clock" id="hrs">00</div>
+                            <div class="progress-ring__wrapper">
+                                <svg class="progress-ring" width="68" height="68">
+                                    <circle class="progress-ring__circle-h" stroke="white" stroke-width="2" cx="34" cy="34" r="33" fill="transparent" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="timer-dscr">Hours</div>
                     </div>
                     <div class="deals__timer-wrapper">
-                        <div class="deals__m timer__item" >
+                        <div class="timer__item">
                             <div class="clock" id="min">00</div>
+                            <div class="progress-ring__wrapper">
+                                <svg class="progress-ring" width="68" height="68">
+                                    <circle class="progress-ring__circle-m" stroke="white" stroke-width="2" cx="34" cy="34" r="33" fill="transparent" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="timer-dscr">Minutes</div>
                     </div>
                     <div class="deals__timer-wrapper">
-                        <div class="deals__s timer__item" >
+                        <div class="timer__item">
                             <div class="clock" id="sec">00</div>
+                            <div class="progress-ring__wrapper">
+                                <svg class="progress-ring" width="68" height="68">
+                                    <circle class="progress-ring__circle-s" stroke="white" stroke-width="2" cx="34" cy="34" r="33" fill="transparent" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="timer-dscr">Seconds</div>
                     </div>
@@ -598,12 +618,14 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <div class="final-section__footer">
             © Copyright All Rights Reserved
         </div>
     </footer>
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
