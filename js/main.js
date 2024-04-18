@@ -91,5 +91,57 @@ function initRatings() {
     }
 }
 
+// timer
 
+const day = document.getElementById("day");
+const hrs = document.getElementById("hrs");
+const min = document.getElementById("min");
+const sec = document.getElementById("sec");
 
+let today = new Date();
+let monday = new Date();
+
+if(today.getDay()){
+    monday.setDate(today.getDate() + 8 - today.getDay())
+} else {
+    monday.setDate(today.getDate() + 1)
+}
+
+let midnight = today.getHours()*3600000 + today.getMinutes()*60000 + today.getSeconds()*1000 + today.getMilliseconds();
+
+let newWeek = monday - midnight;
+
+function countdownTimer() {
+    const rightNow = Date.now();
+
+    const gap = newWeek - rightNow;
+
+    const d = Math.floor(gap / 1000 / 60 / 60 / 24);
+    const h = Math.floor((gap / 1000 / 60 / 60) % 24);
+    const m = Math.floor((gap / 1000 / 60) % 60);
+    const s = Math.floor((gap / 1000) % 60);
+
+    day.innerHTML = d < 10 ? "0" + d : d;
+    hrs.innerHTML = h < 10 ? "0" + h : h;
+    min.innerHTML = m < 10 ? "0" + m : m;
+    sec.innerHTML = s < 10 ? "0" + s : s;
+
+    let seco = ( ( 100 / 60 ) * s)
+    let ss = Math.round(seco);
+
+    let mino = ( ( 100 / 60 ) * m)
+    let mm = Math.round(mino);
+
+    let hore = ( ( 100 / 60 ) * h)
+    let hh = Math.round(hore);
+
+    let deno = ( ( 100 / 60 ) * d)
+    let dd = Math.round(deno);
+
+    sec.style.background = `conic-gradient( rgba(255, 255, 255, 0.2) 0 ${ss}% , #ffffff00 ${ss}% 100%)`;
+    min.style.background = `conic-gradient( rgba(255, 255, 255, 0.2) 0 ${mm}% , #ffffff00 ${mm}% 100%)`;
+    hrs.style.background = `conic-gradient( rgba(255, 255, 255, 0.2) 0 ${hh}% , #ffffff00 ${hh}% 100%)`;
+    day.style.background = `conic-gradient( rgba(255, 255, 255, 0.2) 0 ${dd}% , #ffffff00 ${dd}% 100%)`;
+}
+
+setInterval(countdownTimer, 1000);
