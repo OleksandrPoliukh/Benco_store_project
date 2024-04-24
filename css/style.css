@@ -769,7 +769,7 @@ h1 span {
     position: relative;
 }
 
-.email__input {
+.form__input {
     background-color: rgb(255, 255, 255);
     border: none;
     width: 100%;
@@ -785,7 +785,7 @@ h1 span {
     color: black;
 }
 
-.email__input::placeholder {
+.form__input::placeholder {
     color: black;
 }
 
@@ -1034,6 +1034,20 @@ h1 span {
     transition: all 0.8s ease 0s;
 }
 
+/* .popup-test {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.8s ease 0s;
+} */
+
 .popup.open {
     opacity: 1;
     visibility: visible;
@@ -1055,7 +1069,7 @@ h1 span {
 .popup__content {
     background-color: rgba(243, 238, 228, 0.874);;
     color: black;
-    max-width: 800px;
+    max-width: 506px;
     padding: 50px 30px;
     position: relative;
     transition: all 0.8s ease 0s;
@@ -1064,13 +1078,35 @@ h1 span {
     border-radius: 4%;
 }
 
+/* .popup__content-test {
+    background-color: rgba(243, 238, 228, 0.874);;
+    color: black;
+    max-width: 800px;
+    padding: 50px 30px;
+    position: relative;
+    transition: all 0.8s ease 0s;
+    max-width: 500px;
+    opacity: 0;
+    transform: perspective(600px) translate(0px, -20%) rotateX(-45deg);
+    border-radius: 4%;
+} */
+
+
+
+
 .popup__close {
+    width: 20px;
+    height: 20px;
     position: absolute;
     right: 10px;
     top: 10px;
-    font-size: 20px;
+    font-size: 15px;
+    line-height: 16px;
     color: black;
     text-decoration: none;
+    border: 1px solid black;
+    border-radius: 50%;
+    text-align: center;
 }
 
 .popup__title-wrapper {
@@ -1082,6 +1118,7 @@ h1 span {
 
 .popup__title {
     font-size: 40px;
+    line-height: 45px;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -1130,4 +1167,19 @@ h1 span {
     color: #080808;
     font-size: 16px;
     margin: 0 0.75rem;
+}
+
+.registration-form input {
+    height: 50px;
+    font-size: 15px;
+    line-height: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    margin-top: 5px;
+}
+
+.registration-form__wrapper {
+display: flex;
+flex-direction: column;
+align-items: center;
 }
