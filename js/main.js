@@ -326,8 +326,50 @@ document.addEventListener('keydown', function (e) {
 (function () {
     if (!Element.prototype.matches) {
         Element.prototype.matches = Element.prototype.matchesSelector ||
-        Element.prototype.webkitMatchesSelector ||
-        Element.prototype.mozMatchesSelector ||
-        Element.prototype.msMathesSelector;
+            Element.prototype.webkitMatchesSelector ||
+            Element.prototype.mozMatchesSelector ||
+            Element.prototype.msMathesSelector;
     }
 })();
+
+
+
+// work with DB (mockAPI)
+
+const baseUrl = 'https://662a665b67df268010a3c347.mockapi.io/api/v1/benco_users';
+const registrationForm = document.getElementById("rg-form");
+
+registrationForm.addEventListener('submit', sendRegistrationForm);
+
+async function sendRegistrationForm(event) {
+    event.preventDefault();
+
+    const registrationFormData = Object.fromEntries(new FormData(registrationForm));
+
+    await fetch(baseUrl, {
+        method: 'POST',
+        headers: {
+            "Content-type": "application/json"
+        },         
+        body: JSON.stringify(registrationFormData)        
+    })
+    .then(res => res.json())
+    .then(data =>
+    console.log(JSON.stringify(data))
+    ).catch(error => {
+        console.log(error)
+    })
+
+    alert('You have been successfully signed up!')
+    
+    for (const iterator of this) {
+        iterator.value = "";
+    }
+
+    popupClose(this.closest('.popup'));
+}
+
+
+
+
+

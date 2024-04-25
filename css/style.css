@@ -155,7 +155,8 @@ h3 {
 
 .header__info-right a.btn-gold,
 .deals__bgimg a,
-.popup__content a.btn-gold {
+.popup__content a.btn-gold,
+.popup__content button.btn-gold {
     background-color: #CDA861;
     color: #34383D;
     transition-property: background-color;
@@ -165,9 +166,11 @@ h3 {
 }
 
 .header__info-right a.btn-gold:hover,
-.popup__content a.btn-gold:hover {
+.popup__content a.btn-gold:hover,
+.popup__content button.btn-gold:hover {
     background-color: #efa316;
     border: 3px solid #8b7140;
+    cursor: pointer;
 }
 
 .deals__bgimg a:hover {
@@ -1169,6 +1172,12 @@ h1 span {
     margin: 0 0.75rem;
 }
 
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .registration-form input {
     height: 50px;
     font-size: 15px;
@@ -1176,10 +1185,4 @@ h1 span {
     padding: 20px;
     margin-bottom: 30px;
     margin-top: 5px;
-}
-
-.registration-form__wrapper {
-display: flex;
-flex-direction: column;
-align-items: center;
 }
