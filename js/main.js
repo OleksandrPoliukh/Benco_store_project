@@ -346,27 +346,50 @@ async function sendRegistrationForm(event) {
 
     const registrationFormData = Object.fromEntries(new FormData(registrationForm));
 
-    await fetch(baseUrl, {
-        method: 'POST',
-        headers: {
-            "Content-type": "application/json"
-        },         
-        body: JSON.stringify(registrationFormData)        
-    })
-    .then(res => res.json())
-    .then(data =>
-    console.log(JSON.stringify(data))
-    ).catch(error => {
-        console.log(error)
-    })
+    let response =  await fetch(baseUrl);
+       
+    let allUsers = await response.json();
 
-    alert('You have been successfully signed up!')
+    let userEmails = [];
+
+    for (let index = 0; index < allUsers.length; index++) {
+        const element = allUsers[index];
+        let userEmail = element.email;
+        userEmails[index] = userEmail;
+
+        if (userEmails[index] == registrationFormData.email) {
+            alert("You have already registered")
+            for (const iterator of this) {
+                iterator.value = "";
+            }
+            popupOpen(document.getElementById("signIn-popup"));
+            break
+        } else {
     
-    for (const iterator of this) {
-        iterator.value = "";
+            await fetch(baseUrl, {
+                method: 'POST',
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(registrationFormData)
+            })
+                .then(res => res.json())
+                .then(data =>
+                    console.log(JSON.stringify(data))
+                ).catch(error => {
+                    console.log(error)
+                })
+    
+            alert('You have been successfully signed up!')
+    
+            for (const iterator of this) {
+                iterator.value = "";
+            }
+    
+            popupOpen(document.getElementById("signIn-popup"));
+            break
+        }
     }
-
-    popupClose(this.closest('.popup'));
 }
 
 
