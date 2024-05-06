@@ -1081,22 +1081,6 @@ h1 span {
     border-radius: 4%;
 }
 
-/* .popup__content-test {
-    background-color: rgba(243, 238, 228, 0.874);;
-    color: black;
-    max-width: 800px;
-    padding: 50px 30px;
-    position: relative;
-    transition: all 0.8s ease 0s;
-    max-width: 500px;
-    opacity: 0;
-    transform: perspective(600px) translate(0px, -20%) rotateX(-45deg);
-    border-radius: 4%;
-} */
-
-
-
-
 .popup__close {
     width: 20px;
     height: 20px;
@@ -1185,4 +1169,23 @@ h1 span {
     padding: 20px;
     margin-bottom: 30px;
     margin-top: 5px;
+}
+
+
+input.valid{
+    border: 1px solid #36cc36;
+}
+input.invalid{
+    border: 1px solid orange;
+}
+input + span{
+    display: inline-block;
+    text-align: center;
+    color: orange;
+    opacity: 0;
+    width: 100%;
+}
+input.invalid + span{
+    opacity: 1;
+    margin-bottom: 20px;
 }
