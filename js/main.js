@@ -334,6 +334,40 @@ document.addEventListener('keydown', function (e) {
 
 
 
+// validation
+
+const patterns = {
+    name: /^[A-Za-z]+$/,
+    lastname: /^[A-Za-z]+$/,
+    password: /[0-9a-zA-Z!@#$%^&*]{6,}/,
+    email: /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu
+};
+
+const inputs = document.querySelectorAll('.form__input');
+
+function validate(field, regex) {
+
+    if (regex.test(field.value)) {
+        field.classList.add('valid');
+        if (field.classList.contains('invalid')) {
+            field.classList.replace('invalid', 'valid')
+        }
+    } else {
+        field.classList.add('invalid')
+        if (field.classList.contains('valid')) {
+            field.classList.replace('valid', 'invalid')
+        }
+    }
+}
+
+inputs.forEach((input) => {
+    input.addEventListener('keyup', (e) => {
+        validate(e.target, patterns[e.target.attributes.name.value]);
+    })
+})
+
+
+
 // work with DB (mockAPI)
 
 const baseUrl = 'https://662a665b67df268010a3c347.mockapi.io/api/v1/benco_users';
@@ -344,10 +378,12 @@ registrationForm.addEventListener('submit', sendRegistrationForm);
 async function sendRegistrationForm(event) {
     event.preventDefault();
 
+
+
     const registrationFormData = Object.fromEntries(new FormData(registrationForm));
 
-    let response =  await fetch(baseUrl);
-       
+    let response = await fetch(baseUrl);
+
     let allUsers = await response.json();
 
     let userEmails = [];
@@ -365,7 +401,7 @@ async function sendRegistrationForm(event) {
             popupOpen(document.getElementById("signIn-popup"));
             break
         } else {
-    
+
             await fetch(baseUrl, {
                 method: 'POST',
                 headers: {
@@ -379,20 +415,18 @@ async function sendRegistrationForm(event) {
                 ).catch(error => {
                     console.log(error)
                 })
-    
+
             alert('You have been successfully signed up!')
-    
+
             for (const iterator of this) {
                 iterator.value = "";
             }
-    
+
             popupOpen(document.getElementById("signIn-popup"));
             break
         }
     }
 }
-
-
 
 
 
