@@ -673,17 +673,19 @@
                     <img width="70px" height="70px" src="img/logo.png" alt="logo">
                     <div class="popup__title">Simple furniture</div>
                 </div>
-                <div class="registration-form__wrapper">
-                    <form action="" class="registration-form">
+                <form id="snin-form" class="registration-form">
+                    <div class="rg-form__inner">
                         <label for="email">Email:</label>
                         <input type="email" required class="form__input" name="email"
                             placeholder="Enter your email address">
+                        <span>ex: email@gmail.com</span>
                         <label for="password">Password:</label>
-                        <input type="text" required class="form__input" name="password"
+                        <input type="password" required class="form__input" name="password"
                             placeholder="Enter your password">
-                    </form>
-                    <a href="#" class="btn-gold popup-link">Sign in</a>
-                </div>
+                        <span>min 6 symbols</span>
+                    </div>
+                    <button type="submit" class="btn-gold">Sign in</button>
+                </form>
             </div>
         </div>
     </div>
@@ -698,7 +700,6 @@
                 </div>
                 <form id="rg-form" class="registration-form">
                     <div class="rg-form__inner">
-
                         <label for="name">Name:</label>
                         <input type="text" required class="form__input" name="name"
                             placeholder="Enter your name (Only Latin characters)">

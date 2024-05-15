@@ -366,41 +366,83 @@ inputs.forEach((input) => {
     })
 })
 
+function clearValidation() {
+    inputs.forEach((input) => {
+        input.classList.remove('valid')
+    })
+}
+
 
 
 // work with DB (mockAPI)
 
 const baseUrl = 'https://662a665b67df268010a3c347.mockapi.io/api/v1/benco_users';
 const registrationForm = document.getElementById("rg-form");
+const signInForm = document.getElementById("snin-form");
 
 registrationForm.addEventListener('submit', sendRegistrationForm);
+signInForm.addEventListener('submit', authorization);
 
-async function sendRegistrationForm(event) {
+async function authorization(event) {
     event.preventDefault();
 
-
-
-    const registrationFormData = Object.fromEntries(new FormData(registrationForm));
+    const signInFormData = Object.fromEntries(new FormData(signInForm));
 
     let response = await fetch(baseUrl);
-
     let allUsers = await response.json();
-
     let userEmails = [];
+    let userPasswords = [];
 
     for (let index = 0; index < allUsers.length; index++) {
         const element = allUsers[index];
         let userEmail = element.email;
+        let userPassword = element.password;
         userEmails[index] = userEmail;
+        userPasswords[index] = userPassword;
+
+     
+        if (userEmails[index] == signInFormData.email) {
+            if (userPasswords[index] == signInFormData.password){
+                console.log("success")
+                break
+            } else {
+                console.log("incorrect pass")
+                break
+            }
+        } else if (index == (allUsers.length - 1)) {
+            console.log("Your email not found")
+        }
+    }
+
+}
+
+async function sendRegistrationForm(event) {
+    event.preventDefault();
+
+    const registrationFormData = Object.fromEntries(new FormData(registrationForm));
+
+    let response = await fetch(baseUrl);
+    let allUsers = await response.json();
+
+    let userEmails = [];
+
+    
+    for (let index = 0; index < allUsers.length; index++) {
+        const element = allUsers[index];
+        let userEmail = element.email;
+        userEmails[index] = userEmail;
+        
+
 
         if (userEmails[index] == registrationFormData.email) {
+            clearValidation();
             alert("You have already registered")
             for (const iterator of this) {
                 iterator.value = "";
             }
             popupOpen(document.getElementById("signIn-popup"));
             break
-        } else {
+        } else if (index == (allUsers.length - 1)) {
 
             await fetch(baseUrl, {
                 method: 'POST',
@@ -415,7 +457,7 @@ async function sendRegistrationForm(event) {
                 ).catch(error => {
                     console.log(error)
                 })
-
+            clearValidation();
             alert('You have been successfully signed up!')
 
             for (const iterator of this) {
