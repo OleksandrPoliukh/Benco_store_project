@@ -24,7 +24,8 @@
                     <div class="header__info-right">
                         <a href="https://kurstoday.com.ua/en/banks-of-ukraine/monobank" target="_blank">Currency:
                             USD</a>
-                        <a href="#myAccount-popup" class="btn-gold popup-link">My Account</a>
+                        <a href="#myAccount-popup" id="myAcc-btn" class="btn-gold popup-link">My Account</a>
+                        <a href="#signOut-popup" id="snOut-btn" class="btn-gold popup-link">Sign Out</a>
                     </div>
                 </div>
                 <div class="header__title">
@@ -642,6 +643,8 @@
         </footer>
     </div>
 
+    <!-- POP-UPs -->
+
     <div id="myAccount-popup" class="popup">
         <div class="popup__body">
             <div class="popup__content">
@@ -680,7 +683,7 @@
                             placeholder="Enter your email address">
                         <span>ex: email@gmail.com</span>
                         <label for="password">Password:</label>
-                        <input type="password" required class="form__input" name="password"
+                        <input id="snin-pass" type="password" required class="form__input" name="password"
                             placeholder="Enter your password">
                         <span>min 6 symbols</span>
                     </div>
@@ -723,6 +726,22 @@
                     </div>
                     <button type="submit" class="btn-gold">Sign up</button>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="signOut-popup" class="popup">
+        <div class="popup__body">
+            <div class="popup__content">
+                <a href="#header" class="popup__close close-popup">x</a>
+                <div class="popup__title-wrapper">
+                    <img width="70px" height="70px" src="img/logo.png" alt="logo">
+                    <div class="popup__title">Simple furniture</div>
+                </div>
+                <div class="signOut-popup__wrapper">
+                    <div>Are you sure you want to Sign Out?</div>
+                    <button id="signOut-popup__btn" type="button" class="btn-gold">Sign Out</button>
+                </div>
             </div>
         </div>
     </div>

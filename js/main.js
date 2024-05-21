@@ -260,6 +260,7 @@ function popupOpen(currentPopup) {
 
 function popupClose(popupActive, doUnlock = true) {
     if (unlock) {
+        clearValidation();
         popupActive.classList.remove('open');
         if (doUnlock) {
             bodyUnlock();
@@ -369,6 +370,7 @@ inputs.forEach((input) => {
 function clearValidation() {
     inputs.forEach((input) => {
         input.classList.remove('valid')
+        input.value = "";
     })
 }
 
@@ -379,9 +381,19 @@ function clearValidation() {
 const baseUrl = 'https://662a665b67df268010a3c347.mockapi.io/api/v1/benco_users';
 const registrationForm = document.getElementById("rg-form");
 const signInForm = document.getElementById("snin-form");
+const signOut = document.getElementById("signOut-popup__btn");
 
 registrationForm.addEventListener('submit', sendRegistrationForm);
 signInForm.addEventListener('submit', authorization);
+signOut.addEventListener('click', signingOut);
+
+function signingOut() {
+    alert("You are successfully Signed Out")
+    document.getElementById("snOut-btn").style.display = "none";
+    document.getElementById("myAcc-btn").style.display = "block";
+    const popupActive = document.querySelector('.popup.open');
+    popupClose(popupActive);
+}
 
 async function authorization(event) {
     event.preventDefault();
@@ -400,17 +412,23 @@ async function authorization(event) {
         userEmails[index] = userEmail;
         userPasswords[index] = userPassword;
 
-     
+
         if (userEmails[index] == signInFormData.email) {
-            if (userPasswords[index] == signInFormData.password){
-                console.log("success")
+            if (userPasswords[index] == signInFormData.password) {
+                alert("You are successfully signed in. Happy shopping")
+                document.getElementById("myAcc-btn").style.display = "none";
+                document.getElementById("snOut-btn").style.display = "block";
+                const popupActive = document.querySelector('.popup.open');
+                popupClose(popupActive);
                 break
             } else {
-                console.log("incorrect pass")
+                alert("Incorrect password, please try again")
+                document.getElementById("snin-pass").value = "";
                 break
             }
         } else if (index == (allUsers.length - 1)) {
-            console.log("Your email not found")
+            alert("You are not registered. Please, fill out the registration form");
+            popupOpen(document.getElementById("signUp-popup"));
         }
     }
 
@@ -426,13 +444,11 @@ async function sendRegistrationForm(event) {
 
     let userEmails = [];
 
-    
+
     for (let index = 0; index < allUsers.length; index++) {
         const element = allUsers[index];
         let userEmail = element.email;
         userEmails[index] = userEmail;
-        
-
 
         if (userEmails[index] == registrationFormData.email) {
             clearValidation();
