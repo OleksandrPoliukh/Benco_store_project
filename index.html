@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="879076798336-flh17gaed4k81turrjld4l3ipvniu9ds.apps.googleusercontent.com">
     <title>Simple furniture</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
@@ -656,7 +657,7 @@
                 <a href="#signIn-popup" class="btn-gold popup-link">Sign in</a>
                 <a href="#signUp-popup" class="btn-gold popup-link">Sign up</a>
                 <p class="popup__text">or</p>
-                <button class="google-btn" type="button">
+                <button data-onsuccess="onSignIn" class="google-btn" type="button">
                     <span class="google-btn__inner">
                         <img height="16" width="16" src="img/google.1c50982e.svg" alt="google-logo">
                         <div class="google-text">
@@ -741,12 +742,14 @@
                 <div class="signOut-popup__wrapper">
                     <div>Are you sure you want to Sign Out?</div>
                     <button id="signOut-popup__btn" type="button" class="btn-gold">Sign Out</button>
+                    <button id="signOut-popup__google-btn" type="button" class="btn-gold" onclick="signOut();">Sign Out Google</button>
+
                 </div>
             </div>
         </div>
     </div>
 
-
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>

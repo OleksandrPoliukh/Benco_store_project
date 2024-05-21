@@ -1191,3 +1191,7 @@ input.invalid + span{
 #snOut-btn {
     display: none;
 }
+
+#signOut-popup__google-btn {
+    display: none;
+}
