@@ -337,8 +337,6 @@ document.addEventListener('keydown', function (e) {
 
 // validation
 
-let validationStatus = true;
-
 const patterns = {
     name: /^[A-Za-z]+$/,
     lastname: /^[A-Za-z]+$/,
@@ -353,26 +351,12 @@ function validate(field, regex) {
     if (regex.test(field.value)) {
         field.classList.add('valid');
         if (field.classList.contains('invalid')) {
-            field.classList.replace('invalid', 'valid');
-            validationStatus = true;
+            field.classList.replace('invalid', 'valid')
         }
     } else {
         field.classList.add('invalid')
         if (field.classList.contains('valid')) {
-            field.classList.replace('valid', 'invalid');
-            validationStatus = false;
-        }
-    }
-}
-
-function checkValidationStatus() {
-    for (let index = 0; index < inputs.length; index++) {
-        const input = inputs[index];
-        if (input.classList.contains("invalid")) {
-            validationStatus = false;
-            break;
-        } else {
-            validationStatus = true;
+            field.classList.replace('valid', 'invalid')
         }
     }
 }
@@ -381,13 +365,11 @@ inputs.forEach((input) => {
     input.addEventListener('keyup', (e) => {
         validate(e.target, patterns[e.target.attributes.name.value]);
     })
-
 })
 
 function clearValidation() {
     inputs.forEach((input) => {
         input.classList.remove('valid')
-        input.classList.remove('invalid')
         input.value = "";
     })
 }
@@ -395,7 +377,6 @@ function clearValidation() {
 
 
 // work with DB (mockAPI)
-// sign UP/IN/OUT
 
 const baseUrl = 'https://662a665b67df268010a3c347.mockapi.io/api/v1/benco_users';
 const registrationForm = document.getElementById("rg-form");
@@ -416,7 +397,7 @@ function signingOut() {
 
 async function authorization(event) {
     event.preventDefault();
-    checkValidationStatus();
+
     const signInFormData = Object.fromEntries(new FormData(signInForm));
 
     let response = await fetch(baseUrl);
@@ -424,38 +405,37 @@ async function authorization(event) {
     let userEmails = [];
     let userPasswords = [];
 
-    if (validationStatus == true) {
-        for (let index = 0; index < allUsers.length; index++) {
-            const element = allUsers[index];
-            let userEmail = element.email;
-            let userPassword = element.password;
-            userEmails[index] = userEmail;
-            userPasswords[index] = userPassword;
+    for (let index = 0; index < allUsers.length; index++) {
+        const element = allUsers[index];
+        let userEmail = element.email;
+        let userPassword = element.password;
+        userEmails[index] = userEmail;
+        userPasswords[index] = userPassword;
 
-            if (userEmails[index] == signInFormData.email) {
-                if (userPasswords[index] == signInFormData.password) {
-                    alert("You are successfully signed in. Happy shopping")
-                    document.getElementById("myAcc-btn").style.display = "none";
-                    document.getElementById("snOut-btn").style.display = "block";
-                    const popupActive = document.querySelector('.popup.open');
-                    popupClose(popupActive);
-                    break
-                } else {
-                    alert("Incorrect password, please try again")
-                    document.getElementById("snin-pass").value = "";
-                    break
-                }
-            } else if (index == (allUsers.length - 1)) {
-                alert("You are not registered. Please, fill out the registration form");
-                popupOpen(document.getElementById("signUp-popup"));
+
+        if (userEmails[index] == signInFormData.email) {
+            if (userPasswords[index] == signInFormData.password) {
+                alert("You are successfully signed in. Happy shopping")
+                document.getElementById("myAcc-btn").style.display = "none";
+                document.getElementById("snOut-btn").style.display = "block";
+                const popupActive = document.querySelector('.popup.open');
+                popupClose(popupActive);
+                break
+            } else {
+                alert("Incorrect password, please try again")
+                document.getElementById("snin-pass").value = "";
+                break
             }
+        } else if (index == (allUsers.length - 1)) {
+            alert("You are not registered. Please, fill out the registration form");
+            popupOpen(document.getElementById("signUp-popup"));
         }
     }
+
 }
 
 async function sendRegistrationForm(event) {
     event.preventDefault();
-    checkValidationStatus();
 
     const registrationFormData = Object.fromEntries(new FormData(registrationForm));
 
@@ -464,44 +444,44 @@ async function sendRegistrationForm(event) {
 
     let userEmails = [];
 
-    if (validationStatus == true) {
-        for (let index = 0; index < allUsers.length; index++) {
-            const element = allUsers[index];
-            let userEmail = element.email;
-            userEmails[index] = userEmail;
 
-            if (userEmails[index] == registrationFormData.email) {
-                clearValidation();
-                alert("This email is already registered")
-                for (const iterator of this) {
-                    iterator.value = "";
-                }
-                popupOpen(document.getElementById("signIn-popup"));
-                break
-            } else if (index == (allUsers.length - 1)) {
-                await fetch(baseUrl, {
-                    method: 'POST',
-                    headers: {
-                        "Content-type": "application/json"
-                    },
-                    body: JSON.stringify(registrationFormData)
-                })
-                    .then(res => res.json())
-                    .then(data =>
-                        console.log(JSON.stringify(data))
-                    ).catch(error => {
-                        console.log(error)
-                    })
-                clearValidation();
-                alert('You have been successfully signed up!')
+    for (let index = 0; index < allUsers.length; index++) {
+        const element = allUsers[index];
+        let userEmail = element.email;
+        userEmails[index] = userEmail;
 
-                for (const iterator of this) {
-                    iterator.value = "";
-                }
-
-                popupOpen(document.getElementById("signIn-popup"));
-                break
+        if (userEmails[index] == registrationFormData.email) {
+            clearValidation();
+            alert("You have already registered")
+            for (const iterator of this) {
+                iterator.value = "";
             }
+            popupOpen(document.getElementById("signIn-popup"));
+            break
+        } else if (index == (allUsers.length - 1)) {
+
+            await fetch(baseUrl, {
+                method: 'POST',
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(registrationFormData)
+            })
+                .then(res => res.json())
+                .then(data =>
+                    console.log(JSON.stringify(data))
+                ).catch(error => {
+                    console.log(error)
+                })
+            clearValidation();
+            alert('You have been successfully signed up!')
+
+            for (const iterator of this) {
+                iterator.value = "";
+            }
+
+            popupOpen(document.getElementById("signIn-popup"));
+            break
         }
     }
 }
