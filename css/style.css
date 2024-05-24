@@ -20,6 +20,13 @@ body {
     line-height: 26px;
 }
 
+.wrapper {
+    max-width: 2000px;
+    /* border: 5px solid red; */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
 body.lock {
     overflow: hidden;
 }
