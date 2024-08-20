@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,500;1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
 
-/* font-family: 'Montserrat', sans-serif; */
-/* font-family: 'Roboto', sans-serif; */
-
 html {
     box-sizing: border-box;
     overflow-x: hidden;
@@ -58,7 +55,6 @@ h3 {
     background-position: right;
     height: 100vh;
 }
-
 
 .container {
     max-width: 100%;
