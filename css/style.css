@@ -6,6 +6,7 @@
 
 html {
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 * {
@@ -22,9 +23,8 @@ body {
 
 .wrapper {
     max-width: 2000px;
-    /* border: 5px solid red; */
+    border: 5px solid red;
     margin: 0 auto;
-    padding: 0 15px;
 }
 
 body.lock {
@@ -54,17 +54,15 @@ h3 {
 
 .header {
     background-image: url(../img/header/bg.jpg);
-    height: 1080px;
-    max-width: 1920px;
-    background-repeat: no-repeat;
-    margin: 0 auto;
-    padding-top: 20px;
+    background-size: cover;
+    background-position: right;
+    height: 100vh;
 }
 
+
 .container {
-    max-width: 1700px;
-    margin: 0 auto;
-    padding: 0 10px;
+    max-width: 100%;
+    padding: 20px 30px 0px 30px;
 }
 
 .header__info {
@@ -72,13 +70,11 @@ h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 .header__info-left {
     width: 570px;
-    /* display: flex; */
-    /* justify-content: space-between; */
     position: relative;
     color: #34383D;
 
@@ -188,13 +184,13 @@ h3 {
 .header__title {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 190px;
+    align-items: start;
+    margin-bottom: 140px;
 }
 
 .header__title-left {
     display: flex;
-    min-width: 1050px;
+    /* min-width: 1050px; */
     align-items: center;
 }
 
@@ -204,7 +200,8 @@ h3 {
 
 
 .header__title-right {
-    min-width: 120px;
+    min-width: 170px;
+
 }
 
 .header__title-right img:last-child {
@@ -212,7 +209,7 @@ h3 {
 }
 
 .menu__item {
-    margin-right: 50px;
+    margin-right: 30px;
 }
 
 .menu__item a {
@@ -252,7 +249,7 @@ h1 span {
     font-size: 22px;
     line-height: 26px;
     max-width: 490px;
-    margin-bottom: 60px;
+    margin-bottom: 120px;
 }
 
 .header__content a,
@@ -1064,7 +1061,8 @@ h1 span {
 }
 
 .popup__content {
-    background-color: rgba(243, 238, 228, 0.874);;
+    background-color: rgba(243, 238, 228, 0.874);
+    ;
     color: black;
     max-width: 506px;
     padding: 50px 30px;
@@ -1103,7 +1101,7 @@ h1 span {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    }
+}
 
 .popup__text {
     font-family: 'Montserrat', sans-serif;
@@ -1177,20 +1175,23 @@ h1 span {
 }
 
 
-input.valid{
+input.valid {
     border: 1px solid #36cc36;
 }
-input.invalid{
+
+input.invalid {
     border: 1px solid orange;
 }
-input + span{
+
+input+span {
     display: inline-block;
     text-align: center;
     color: orange;
     opacity: 0;
     width: 100%;
 }
-input.invalid + span{
+
+input.invalid+span {
     opacity: 1;
     margin-bottom: 20px;
 }
@@ -1201,4 +1202,79 @@ input.invalid + span{
 
 #signOut-popup__google-btn {
     display: none;
+}
+
+@media (max-width: 1600px) {
+    .wrapper {
+        max-width: 2000px;
+        border: 5px solid green;
+        margin: 0 auto;
+    }
+
+    .menu__item {
+        margin-right: 15px;
+        font-size: 17px;
+    }
+
+    .header__title {
+        margin-bottom: 80px;
+        justify-content: space-between;
+    }
+
+    .header__title-right {
+        margin-right: 80px;
+    }
+
+    .header__title-right img {
+        width: 35px;
+    }
+
+    .header__content h1 {
+        font-size: 56px;
+        line-height: 83px;
+        margin-bottom: 30px;
+    }
+
+    .header__content-text {
+        margin-bottom: 70px;
+    }
+
+    .header__info-left {
+        font-size: 20px;
+    }
+
+
+    .header__info-right a {
+        width: 176px;
+        height: 48px;
+        font-weight: 600;
+        padding: 16px;
+        font-size: 18px;
+        line-height: 19px;
+        margin-right: 15px;
+    }
+
+    .header__info-right {
+        width: 470px;
+        display: flex;
+        justify-content: start;
+    }
+
+    /* Змінити розміри текстів на менші 
+    Прибрати боковий скрол
+    Зменшити відстані між навігаційними кнопками    /// done
+    Зменшити відступ між заголовком та навігацією
+    зменшити розмір лого
+    зменшити номер телефону
+    зменшити розміри кнопок
+    */
+}
+
+@media (max-width: 1200px) {
+    .wrapper {
+        max-width: 2000px;
+        border: 5px solid blue;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
 }
