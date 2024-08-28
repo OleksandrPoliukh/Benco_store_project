@@ -1,13 +1,41 @@
 //product slider
 
-$(function () {
-
-    $('.product__slider').slick({
-        slidesToShow: 5,
-        slidesToScroll: 5,
-    });
-
-});
+$('.product__slider').slick({
+   
+    speed: 1000,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    infinite: true,
+    autoplay: false,
+    
+    responsive: [
+      {
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 2,
+          infinite: true
+        }
+      },
+      {
+        breakpoint: 1350,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+  });
 
 
 //adding products to cart
@@ -485,29 +513,3 @@ async function sendRegistrationForm(event) {
         }
     }
 }
-
-//google auth
-
-function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    document.getElementById("myAcc-btn").style.display = "none";
-    document.getElementById("signOut-popup__btn").style.display = "none";
-    document.getElementById("snOut-btn").style.display = "block";
-    document.getElementById("signOut-popup__google-btn").style.display = "block";
-}
-
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        alert('User signed out.');
-        document.getElementById("myAcc-btn").style.display = "block";
-        document.getElementById("signOut-popup__btn").style.display = "block";
-        document.getElementById("snOut-btn").style.display = "none";
-        document.getElementById("signOut-popup__google-btn").style.display = "none";
-    });
-}
-
