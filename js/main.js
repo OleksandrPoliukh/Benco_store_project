@@ -1,12 +1,55 @@
 //product slider
 
-$(function () {
+$('.product__slider').slick({
 
-    $('.product__slider').slick({
-        slidesToShow: 5,
-        slidesToScroll: 5,
-    });
+    speed: 300,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    infinite: true,
+    autoplay: false,
+    // mobileFirst: true,
+    // respondTo: "container",
 
+
+    responsive: [
+        {
+            breakpoint: 1600,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                infinite: true,
+
+                //   centerPadding: "150px"
+                //   centerMode: true
+            }
+        },
+        {
+            breakpoint: 1350,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
+            }
+        },
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                //   arrows: false
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                //   arrows: false
+            }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+    ]
 });
 
 
@@ -103,47 +146,22 @@ let midnight = today.getHours() * 3600000 + today.getMinutes() * 60000 + today.g
 let newWeek = monday - midnight;
 
 const circleD = document.querySelector('.progress-ring__circle-d');
-const radiusD = circleD.r.baseVal.value;
-const circumferenceD = 2 * Math.PI * radiusD;
-circleD.style.strokeDasharray = `${circumferenceD} ${circumferenceD}`;
-circleD.style.strokeDashoffset = circumferenceD;
-
 const circleH = document.querySelector('.progress-ring__circle-h');
-const radiusH = circleH.r.baseVal.value;
-const circumferenceH = 2 * Math.PI * radiusH;
-circleH.style.strokeDasharray = `${circumferenceH} ${circumferenceH}`;
-circleH.style.strokeDashoffset = circumferenceH;
-
 const circleM = document.querySelector('.progress-ring__circle-m');
-const radiusM = circleM.r.baseVal.value;
-const circumferenceM = 2 * Math.PI * radiusM;
-circleM.style.strokeDasharray = `${circumferenceM} ${circumferenceM}`;
-circleM.style.strokeDashoffset = circumferenceM;
-
 const circleS = document.querySelector('.progress-ring__circle-s');
-const radiusS = circleS.r.baseVal.value;
-const circumferenceS = 2 * Math.PI * radiusS;
-circleS.style.strokeDasharray = `${circumferenceS} ${circumferenceS}`;
-circleS.style.strokeDashoffset = circumferenceS;
 
-function setProgressD(percent) {
-    const offset = circumferenceD - percent / 100 * circumferenceD;
-    circleD.style.strokeDashoffset = offset;
+function getCircumference(circle) {
+    const computedRadius = window.getComputedStyle(circle);
+    const radius = parseFloat(computedRadius.r);
+    const circumference = 2 * Math.PI * radius;
+    return circumference;
 }
 
-function setProgressH(percent) {
-    const offset = circumferenceH - percent / 100 * circumferenceH;
-    circleH.style.strokeDashoffset = offset;
-}
-
-function setProgressM(percent) {
-    const offset = circumferenceM - percent / 100 * circumferenceM;
-    circleM.style.strokeDashoffset = offset;
-}
-
-function setProgressS(percent) {
-    const offset = circumferenceS - percent / 100 * circumferenceS;
-    circleS.style.strokeDashoffset = offset;
+function setProgress(circle, percent, circumference) {
+    circle.style.strokeDasharray = `${circumference} ${circumference}`;
+    circle.style.strokeDashoffset = circumference;
+    const offset = circumference - percent / 100 * circumference;
+    circle.style.strokeDashoffset = offset;
 }
 
 function countdownTimer() {
@@ -162,15 +180,17 @@ function countdownTimer() {
     min.innerHTML = m < 10 ? "0" + m : m;
     sec.innerHTML = s < 10 ? "0" + s : s;
 
-    const daysPercent = ((100 / 7) * d)
-    const hoursPercent = ((100 / 24) * h)
-    const minutesPercent = ((100 / 60) * m)
-    const secondsPercent = ((100 / 60) * s)
+    const daysPercent = ((100 / 7) * d);
+    const hoursPercent = ((100 / 24) * h);
+    const minutesPercent = ((100 / 60) * m);
+    const secondsPercent = ((100 / 60) * s);
 
-    setProgressD(daysPercent);
-    setProgressH(hoursPercent);
-    setProgressM(minutesPercent);
-    setProgressS(secondsPercent);
+    const circumference = getCircumference(circleS);
+
+    setProgress(circleD, daysPercent, circumference);
+    setProgress(circleH, hoursPercent, circumference);
+    setProgress(circleM, minutesPercent, circumference);
+    setProgress(circleS, secondsPercent, circumference);
 }
 
 setInterval(countdownTimer, 1000);
@@ -485,29 +505,3 @@ async function sendRegistrationForm(event) {
         }
     }
 }
-
-//google auth
-
-function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    document.getElementById("myAcc-btn").style.display = "none";
-    document.getElementById("signOut-popup__btn").style.display = "none";
-    document.getElementById("snOut-btn").style.display = "block";
-    document.getElementById("signOut-popup__google-btn").style.display = "block";
-}
-
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        alert('User signed out.');
-        document.getElementById("myAcc-btn").style.display = "block";
-        document.getElementById("signOut-popup__btn").style.display = "block";
-        document.getElementById("snOut-btn").style.display = "none";
-        document.getElementById("signOut-popup__google-btn").style.display = "none";
-    });
-}
-

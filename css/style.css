@@ -3,7 +3,6 @@
 
 html {
     box-sizing: border-box;
-    overflow-x: hidden;
 }
 
 * {
@@ -14,8 +13,9 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 26px;
+    overflow-x: hidden;
 }
 
 .wrapper {
@@ -51,14 +51,17 @@ h3 {
 
 .header {
     background-image: url(../img/header/bg.jpg);
-    background-size: cover;
-    background-position: right;
+    background-size: 100% auto;
+    /* Заповнює всю ширину, зберігаючи пропорційну висоту */
+    background-repeat: no-repeat;
     height: 100vh;
+    max-width: 100%;
+
 }
 
 .container {
-    max-width: 100%;
-    padding: 20px 30px 0px 30px;
+
+    padding: 20px 30px 40px 30px;
 }
 
 .header__info {
@@ -181,17 +184,16 @@ h3 {
     display: flex;
     justify-content: space-between;
     align-items: start;
-    margin-bottom: 140px;
+    margin-bottom: 70px;
 }
 
 .header__title-left {
     display: flex;
-    /* min-width: 1050px; */
     align-items: center;
 }
 
 .header__title-left img {
-    margin-right: 45px;
+    margin-right: 15px;
 }
 
 
@@ -205,7 +207,7 @@ h3 {
 }
 
 .menu__item {
-    margin-right: 30px;
+    margin-right: 15px;
 }
 
 .menu__item a {
@@ -228,7 +230,7 @@ h3 {
 .header__content h1 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    font-size: 76px;
+    font-size: 72px;
     line-height: 93px;
     color: #34383D;
     margin-bottom: 30px;
@@ -242,9 +244,9 @@ h1 span {
 .header__content-text {
     color: #34383D;
     opacity: 0.6;
-    font-size: 22px;
+    font-size: 21px;
     line-height: 26px;
-    max-width: 490px;
+    max-width: 380px;
     margin-bottom: 120px;
 }
 
@@ -286,30 +288,48 @@ h1 span {
 
 .about__inner {
     max-width: 1600px;
-    height: 600px;
-    ;
+    height: auto;
     background: rgba(205, 168, 97, 0.1);
     margin: 0 auto;
     display: flex;
-    position: relative;
+    /* position: relative; */
     align-items: center;
     border-radius: 50px;
+    padding: 10px;
+    justify-content: flex-start;
+}
+
+.about__images {
+    position: relative;
+    flex: 1;
 }
 
 .about__inner>img {
     margin-left: 70px;
+    max-width: 600px;
+    height: auto;
+    display: block;
+}
+
+.about__images img {
+    max-width: 100%;
+    /* Забезпечує, що зображення не перевищує ширину контейнера */
+    height: auto;
+    /* Зберігає пропорції зображення */
+    display: block;
 }
 
 .about__inner-decor {
     position: absolute;
-    left: -167px;
-    bottom: -97px;
+    left: -100px;
+    bottom: -100px;
 }
 
 .about__content {
     position: relative;
     margin-left: 70px;
-    max-width: 515px;
+    max-width: 100%;
+    flex: 1;
 }
 
 .section__title {
@@ -327,8 +347,8 @@ h1 span {
 .about__content-slogan {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    font-size: 76px;
-    line-height: 93px;
+    font-size: 3rem;
+    line-height: 60px;
     text-transform: uppercase;
     margin-bottom: 30px;
 }
@@ -340,10 +360,14 @@ h1 span {
     margin-bottom: 25px;
 }
 
+.about__content-text {
+    max-width: 500px;
+}
+
 .about__content-chair {
     position: absolute;
-    right: -260px;
-    top: 80px;
+    right: -864px;
+    top: 136px;
 }
 
 .product {
@@ -352,13 +376,7 @@ h1 span {
 }
 
 .product .container {
-    position: relative;
-}
-
-.product__slider-decor {
-    position: absolute;
-    right: -120px;
-    top: 94px;
+    max-width: 100vw;
 }
 
 .product__text {
@@ -366,7 +384,7 @@ h1 span {
 }
 
 .product__slider {
-    max-width: 1513px;
+    max-width: 1413px;
     margin: 0 auto;
     position: relative;
 }
@@ -378,8 +396,8 @@ h1 span {
     padding-top: 38px;
     min-height: 410px;
     justify-content: space-between;
-    max-width: 257px;
-    margin: 0 auto;
+    /* max-width: 250px; */
+    margin: 0;
 }
 
 .product__slider-name {
@@ -423,6 +441,7 @@ h1 span {
     opacity: 0.8;
     font-size: 18px;
     line-height: 21px;
+    max-width: 250px;
 }
 
 .slick-arrow {
@@ -480,26 +499,19 @@ h1 span {
     position: relative;
 }
 
-.deals__decor-rt {
-    position: absolute;
-    right: -66px;
-    top: -48px;
-}
-
-.deals__decor-lb {
-    position: absolute;
-    left: -120px;
-    bottom: -70px;
-}
-
 .deals__bgimg {
     margin: 0 80px;
     text-align: center;
     min-height: 767px;
     background-image: url(../img/deals/deals.png);
+    background-size: cover; /* Зробити зображення пропорційним, щоб воно заповнювало контейнер */
+    background-position: center; /* Центрування зображення */
     border: 5px solid #AACACD;
     border-radius: 50px;
     padding-top: 60px;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    height: auto;
 }
 
 .deals__bgimg h2 {
@@ -1202,43 +1214,144 @@ input.invalid+span {
 
 @media (max-width: 1600px) {
     .wrapper {
-        max-width: 2000px;
         border: 5px solid green;
-        margin: 0 auto;
     }
 
     .menu__item {
-        margin-right: 15px;
-        font-size: 17px;
+        margin-right: 14px;
+        /* font-size: 16px; */
     }
 
-    .header__title {
+    /* .header__title {
         margin-bottom: 80px;
-        justify-content: space-between;
+    } */
+
+    /* .header__title-right {
+        margin-right: 80px;
+    } */
+
+    /* .header__title-right img {
+        width: 35px;
+    } */
+
+    .header__content h1 {
+        font-size: 54px;
+        line-height: 83px;
+        /* margin-bottom: 30px; */
+    }
+
+    /* .header__content-text {
+        margin-bottom: 70px;
+    } */
+
+    .header__info-left {
+        font-size: 18px;
+    }
+
+    /* .header__info-right a {
+        width: 176px;
+        height: 48px;
+        font-weight: 600;
+        padding: 16px;
+        font-size: 18px;
+        line-height: 19px;
+        margin-right: 15px;
+    } */
+
+    /* .header__info-right {
+        width: 470px;
+        display: flex;
+        justify-content: start;
+    } */
+
+    .about__content-chair {
+        display: none !important;
+    }
+
+    .about__content {
+        margin-left: 130px;
+        padding-right: 10px;
+    }
+
+    .slick-next {
+        right: -23px;
+        /* z-index: -1; */
+    }
+
+    .slick-prev {
+        left: -23px;
+    }
+    
+    .deals__decor-lb {
+        display: none;
+    }
+    
+    .deals__bgimg {
+        /* margin: 0 80px; */
+        min-height: 700px;
+        padding-top: 50px;
+    }
+    
+    .deals__bgimg h2 {
+        margin-bottom: 30px;
+        font-size: 27px;
+    }
+    
+    .deals__timer {
+        max-width: 450px;
+        margin: 0 auto 30px;
+    }
+    
+    /* .progress-ring__wrapper {
+        position: absolute;
+        top: -1.95px;
+    }
+    
+    .progress-ring {
+        border-radius: 50%;
+    } */
+    
+    
+    .timer__item,
+    .clock {
+        font-size: 23px;
+    }
+    
+    /* .timer__item {
+        width: 66px;
+        height: 66px;
+        border: 1px solid #F3E9E9;
+        position: relative;
+    }
+    
+    .timer-dscr {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+        font-style: italic;
+        font-weight: 600;
+    } */
+}
+
+@media (max-width: 1500px) {
+    .wrapper {
+        border: 5px solid yellow;
+    }
+
+    .menu__item {
+        margin-right: 14px;
+        font-size: 15px;
+    }
+
+    .header__title-left img {
+        width: 132px;
+        height: 46px;
+        margin-right: 12px;
     }
 
     .header__title-right {
-        margin-right: 80px;
+        margin-right: 10px;
     }
-
-    .header__title-right img {
-        width: 35px;
-    }
-
-    .header__content h1 {
-        font-size: 56px;
-        line-height: 83px;
-        margin-bottom: 30px;
-    }
-
-    .header__content-text {
-        margin-bottom: 70px;
-    }
-
-    .header__info-left {
-        font-size: 20px;
-    }
-
 
     .header__info-right a {
         width: 176px;
@@ -1251,26 +1364,194 @@ input.invalid+span {
     }
 
     .header__info-right {
-        width: 470px;
-        display: flex;
-        justify-content: start;
+        width: 400px;
     }
 
-    /* Змінити розміри текстів на менші 
-    Прибрати боковий скрол
-    Зменшити відстані між навігаційними кнопками    /// done
-    Зменшити відступ між заголовком та навігацією
-    зменшити розмір лого
-    зменшити номер телефону
-    зменшити розміри кнопок
-    */
+    .header__info-left {
+        font-size: 16px;
+    }
+
+    .header__content h1 {
+        max-width: 600px;
+        font-size: 45px;
+        line-height: 66px;
+    }
+
+    .header__content-text {
+        max-width: 400px;
+        font-size: 20px;
+    }
+
+    .header__content a {
+        display: inline-block;
+        min-width: 176px;
+        height: 48px;
+        padding: 11px 23px;
+        font-weight: 600;
+        font-size: 18px;
+    }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
     .wrapper {
-        max-width: 2000px;
         border: 5px solid blue;
-        margin: 0 auto;
-        padding: 0 15px;
     }
+
+    .header__title-left img {
+        width: 120px;
+        height: 42px;
+        margin-right: 10px;
+    }
+
+    .header__title {
+        margin-bottom: 50px;
+    }
+
+    .menu__item {
+        margin-right: 10px;
+        font-size: 14px;
+    }
+
+    .header__info-right a {
+        width: 158px;
+        height: 43px;
+        font-weight: 600;
+        padding: 10px;
+        font-size: 16px;
+        line-height: 21px;
+        margin-right: 37px;
+    }
+
+    .header__info-left {
+        font-size: 14px;
+    }
+
+    .header__title-right img {
+        width: 30px;
+    }
+
+    .deals__bgimg {
+        min-height: 600px;
+        padding-top: 30px;
+    }
+    
+    .deals__bgimg h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+    
+    .deals__timer {
+        max-width: 405px;
+        margin: 0 auto 25px;
+    }
+    
+    /* .progress-ring__wrapper {
+        position: absolute;
+        top: -1.95px;
+    }
+    
+    .progress-ring {
+        border-radius: 50%;
+    } */
+    
+    
+    .timer__item,
+    .clock {
+        font-size: 21px;
+    }
+    
+    /* .timer__item {
+        width: 66px;
+        height: 66px;
+        border: 1px solid #F3E9E9;
+        position: relative;
+    }*/
+    
+    .timer-dscr {
+        font-size: 14px;
+        font-weight: 500;
+    } 
+
+    .deals__bgimg a {
+        width: 180px;
+        height: 45px;
+        padding: 8px;
+        font-size: 19px;
+        
+    }
+
+
+
+}
+
+@media (max-width: 1350px) {
+    .wrapper {
+        border: 5px solid rgb(0, 217, 255);
+    }
+
+    .deals__bgimg {
+        margin: 20px;
+        min-height: 480px;
+        padding-top: 20px;
+    }
+    
+    .deals__bgimg h2 {
+        margin-bottom: 10px;
+        font-size: 22px;
+    }
+    
+    .deals__timer {
+        max-width: 380px;
+        margin: 0 auto 15px;
+    }
+    
+    /* .progress-ring__wrapper {
+        position: absolute;
+        top: -1.95px;
+    }
+    */
+    
+    
+    .timer__item,
+    .clock {
+        font-size: 18px;
+    }
+    
+     .timer__item {
+        width: 60px;
+        height: 60px;
+    }
+
+    .progress-ring {
+        width: 62px;
+        height: 62px;
+    }
+
+    .progress-ring__circle-s,
+    .progress-ring__circle-m,
+    .progress-ring__circle-h,
+    .progress-ring__circle-d {
+        cx: 30.5;
+        cy: 31;
+        r: 30;
+    }
+    
+    .timer-dscr {
+        font-size: 10px;
+        font-weight: 500;
+    } 
+
+    .deals__bgimg a {
+        width: 144px;
+        height: 36px;
+        padding: 3px;
+        font-size: 15px;
+        font-weight: 600;
+        
+    }
+
+
+
+
+
 }
