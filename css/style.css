@@ -19,7 +19,7 @@ body {
 }
 
 .wrapper {
-    max-width: 2000px;
+    max-width: 1920px;
     border: 5px solid red;
     margin: 0 auto;
 }
@@ -50,18 +50,24 @@ h3 {
 }
 
 .header {
-    background-image: url(../img/header/bg.jpg);
-    background-size: 100% auto;
-    /* Заповнює всю ширину, зберігаючи пропорційну висоту */
-    background-repeat: no-repeat;
-    height: 100vh;
-    max-width: 100%;
+    
 
 }
 
 .container {
-
     padding: 20px 30px 40px 30px;
+}
+
+.header .container {
+    background-image: url(../img/header/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-position: right;
+    width: 100%; /* Width of the block */
+    height: 100%;
 }
 
 .header__info {
@@ -225,6 +231,7 @@ h3 {
 
 .header__content {
     max-width: 660px;
+    margin-bottom: 102px;
 }
 
 .header__content h1 {
@@ -292,7 +299,6 @@ h1 span {
     background: rgba(205, 168, 97, 0.1);
     margin: 0 auto;
     display: flex;
-    /* position: relative; */
     align-items: center;
     border-radius: 50px;
     padding: 10px;
@@ -301,22 +307,13 @@ h1 span {
 
 .about__images {
     position: relative;
-    flex: 1;
 }
 
-.about__inner>img {
-    margin-left: 70px;
-    max-width: 600px;
-    height: auto;
-    display: block;
-}
-
-.about__images img {
+.about__images .about__inner-decor-home {
     max-width: 100%;
-    /* Забезпечує, що зображення не перевищує ширину контейнера */
     height: auto;
-    /* Зберігає пропорції зображення */
     display: block;
+    margin-left: 70px;
 }
 
 .about__inner-decor {
@@ -504,8 +501,10 @@ h1 span {
     text-align: center;
     min-height: 767px;
     background-image: url(../img/deals/deals.png);
-    background-size: cover; /* Зробити зображення пропорційним, щоб воно заповнювало контейнер */
-    background-position: center; /* Центрування зображення */
+    background-size: cover;
+    /* Зробити зображення пропорційним, щоб воно заповнювало контейнер */
+    background-position: center;
+    /* Центрування зображення */
     border: 5px solid #AACACD;
     border-radius: 50px;
     padding-top: 60px;
@@ -584,32 +583,31 @@ h1 span {
     position: relative;
 }
 
-.spec__decor {
-    position: absolute;
-    left: -120px;
-}
-
-.spec__bgimg {
-    background-image: url(../img/spec/sofa.png);
-    width: 956px;
-    height: 415px;
-    margin: 0 auto -40px;
-}
-
 .spec__wrapper {
     max-width: 1680px;
     height: 303px;
     background-color: rgba(205, 168, 97, 0.19);
     border-radius: 30px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
+}
+
+.spec__bgimg {
+    background-image: url(../img/spec/sofa.png);
+    max-width: 956px;
+    height: 415px;
+    margin: 0 auto -40px;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
 }
 
 .spec__items {
-    width: 1032px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     min-height: 70px;
 }
@@ -659,38 +657,37 @@ h1 span {
 }
 
 .reviews {
-    background-color: rgba(205, 168, 97, 0.2);
-    max-width: 1920px;
-    margin: 0 auto;
+    background-color: #f5eee1;
+    margin: 0;
     padding: 80px 0;
     text-align: center;
 }
 
 .reviews .container {
+    width: 100%;
     position: relative;
 }
 
 .reviews__decor-dotes {
     position: absolute;
-    right: 1632px;
-    bottom: 444px;
+    left: 100px;
 }
 
 .reviews__decor-arrow {
     position: absolute;
-    right: -107px;
+    right: 0;
     top: 139px;
 }
 
 .reviews__items {
+    width: 100%;
     margin-top: 80px;
     display: flex;
     justify-content: space-between;
 }
 
 .reviews__item {
-    width: 540px;
-    height: 345px;
+    width: 100%;
     box-shadow: 0 2px 18px 0 rgba(0, 0, 0, 0.15);
     background: #f8f7f7;
     position: relative;
@@ -698,24 +695,26 @@ h1 span {
     flex-direction: column;
     align-items: center;
     border-radius: 30px;
+    margin: 0 20px;
+    padding: 40px 0;
 }
 
 .reviews__item-img {
     position: absolute;
-    left: 39%;
     top: -11%;
 }
 
 .reviews__item-text {
-    margin-top: 108px;
+    margin-top: 80px;
     margin-bottom: 50px;
     font-weight: 400;
     font-size: 18px;
     line-height: 21px;
-    width: 498px;
+    width: 100%;
     color: rgba(52, 56, 61, 0.8);
     text-align: center;
     letter-spacing: 0.09em;
+    padding: 0 30px;
 }
 
 .reviews__item-name {
@@ -737,8 +736,8 @@ h1 span {
 .sub {
     padding: 80px 0;
     background-color: #f5eee1;
-    max-width: 1920px;
-    margin: 0 auto;
+    /* max-width: 1920px; */
+    /* margin: 0 auto; */
 }
 
 .sub .container {
@@ -747,7 +746,7 @@ h1 span {
 
 .sub__decor-dotes {
     position: absolute;
-    right: -107px;
+    right: 0;
     bottom: 0;
 }
 
@@ -759,17 +758,19 @@ h1 span {
 
 .sub__bgimg {
     margin: 0 120px;
-    width: 1440px;
-    height: 697px;
+    height: 600px;
     background-image: url(../img/sub/bg-img.png);
     background-position: center -28px;
     filter: drop-shadow(0px 34px 62px rgba(0, 0, 0, 0.1));
     border-radius: 20px;
-    padding: 100px 110px;
+    padding: 30px 60px;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .sub__inner {
-    max-width: 610px;
+    max-width: 713px;
+    padding: 46px;
 }
 
 .sub__text {
@@ -837,12 +838,10 @@ h1 span {
 .footer {
     padding: 80px 0 0 0;
     background-color: rgb(205, 168, 97);
-    max-width: 1920px;
-    margin: 0 auto;
 }
 
 .main__footer {
-    padding-bottom: 80px;
+    padding-bottom: 40px;
     display: flex;
     justify-content: space-between;
 }
@@ -1219,53 +1218,23 @@ input.invalid+span {
 
     .menu__item {
         margin-right: 14px;
-        /* font-size: 16px; */
     }
-
-    /* .header__title {
-        margin-bottom: 80px;
-    } */
-
-    /* .header__title-right {
-        margin-right: 80px;
-    } */
-
-    /* .header__title-right img {
-        width: 35px;
-    } */
 
     .header__content h1 {
         font-size: 54px;
         line-height: 83px;
-        /* margin-bottom: 30px; */
     }
-
-    /* .header__content-text {
-        margin-bottom: 70px;
-    } */
 
     .header__info-left {
         font-size: 18px;
     }
 
-    /* .header__info-right a {
-        width: 176px;
-        height: 48px;
-        font-weight: 600;
-        padding: 16px;
-        font-size: 18px;
-        line-height: 19px;
-        margin-right: 15px;
-    } */
-
-    /* .header__info-right {
-        width: 470px;
-        display: flex;
-        justify-content: start;
-    } */
+    .about {
+        padding: 40px 0;
+    }
 
     .about__content-chair {
-        display: none !important;
+        display: none;
     }
 
     .about__content {
@@ -1273,64 +1242,87 @@ input.invalid+span {
         padding-right: 10px;
     }
 
+    .product {
+        padding: 40px 0;
+    }
+
     .slick-next {
         right: -23px;
-        /* z-index: -1; */
     }
 
     .slick-prev {
         left: -23px;
     }
-    
+
+    .deals {
+        padding: 40px 0;
+    }
+
     .deals__decor-lb {
         display: none;
     }
-    
+
     .deals__bgimg {
-        /* margin: 0 80px; */
-        min-height: 700px;
-        padding-top: 50px;
+        min-height: 630px;
+        padding-top: 40px;
     }
-    
+
     .deals__bgimg h2 {
         margin-bottom: 30px;
         font-size: 27px;
     }
-    
+
     .deals__timer {
         max-width: 450px;
         margin: 0 auto 30px;
     }
-    
-    /* .progress-ring__wrapper {
-        position: absolute;
-        top: -1.95px;
-    }
-    
-    .progress-ring {
-        border-radius: 50%;
-    } */
-    
-    
+
     .timer__item,
     .clock {
         font-size: 23px;
     }
-    
-    /* .timer__item {
-        width: 66px;
-        height: 66px;
-        border: 1px solid #F3E9E9;
-        position: relative;
+
+    .spec {
+        padding: 40px 0;
     }
-    
-    .timer-dscr {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 16px;
-        line-height: 20px;
-        font-style: italic;
-        font-weight: 600;
-    } */
+
+    .reviews {
+        padding: 40px 0;
+    }
+
+    .sub__inner {
+        max-width: 650px;
+    }
+
+    .section__title {
+        font-size: 27px;
+    }
+
+    .sub {
+        padding: 40px 0;
+    }
+
+    .sub__text {
+        font-size: 20px;
+    }
+
+    .sub .form__input {
+        height: 70px;
+        font-size: 20px;
+        padding-right: 205px;
+        padding-left: 20px;
+    }
+
+    .sub .submit__input {
+        min-width: 0;
+        height: 50px;
+        font-size: 20px;
+        padding: 10px 30px;
+    }
+
+    .sub__decor-dotes {
+        height: 200px;
+    }
 }
 
 @media (max-width: 1500px) {
@@ -1390,9 +1382,60 @@ input.invalid+span {
         font-weight: 600;
         font-size: 18px;
     }
+
+    .about__content-slogan {
+        font-size: 40px;
+    }
+
+    .about__content-text {
+        font-size: 18px;
+        margin-bottom: 50px;
+    }
+
+    .deals__bgimg {
+        padding-top: 30px;
+    }
+
+    .sub__inner {
+        max-width: 570px;
+        padding: 25px;
+    }
+
+    .section__title {
+        font-size: 25px;
+    }
+
+    .sub__text {
+        font-size: 18px;
+        margin-bottom: 50px;
+    }
+
+    .sub .form__input {
+        height: 65px;
+        font-size: 18px;
+    }
+
+    .sub .submit__input {
+        height: 45px;
+        font-size: 18px;
+        padding: 9px 30px;
+    }
+
+    .sub__bgimg {
+        margin: 0 50px;
+    }
+
+    .main__footer-right_list li {
+        font-size: 18px;
+    }
+
+    .main__footer-right {
+        justify-content: space-around;
+    }
 }
 
-@media (max-width: 1400px) {
+
+@media (max-width: 1350px) {
     .wrapper {
         border: 5px solid blue;
     }
@@ -1412,6 +1455,10 @@ input.invalid+span {
         font-size: 14px;
     }
 
+    .header__info-right {
+        justify-content: flex-end;
+    }
+
     .header__info-right a {
         width: 158px;
         height: 43px;
@@ -1419,11 +1466,17 @@ input.invalid+span {
         padding: 10px;
         font-size: 16px;
         line-height: 21px;
-        margin-right: 37px;
+        margin-right: 0px;
+        margin-left: 10px;
     }
 
     .header__info-left {
         font-size: 14px;
+    }
+
+    .header__title-right {
+        min-width: 90px;
+        margin: 0;
     }
 
     .header__title-right img {
@@ -1434,59 +1487,56 @@ input.invalid+span {
         min-height: 600px;
         padding-top: 30px;
     }
-    
+
     .deals__bgimg h2 {
         margin-bottom: 20px;
         font-size: 24px;
     }
-    
+
     .deals__timer {
         max-width: 405px;
         margin: 0 auto 25px;
     }
-    
-    /* .progress-ring__wrapper {
-        position: absolute;
-        top: -1.95px;
-    }
-    
-    .progress-ring {
-        border-radius: 50%;
-    } */
-    
-    
+
     .timer__item,
     .clock {
         font-size: 21px;
     }
-    
-    /* .timer__item {
-        width: 66px;
-        height: 66px;
-        border: 1px solid #F3E9E9;
-        position: relative;
-    }*/
-    
+
     .timer-dscr {
         font-size: 14px;
         font-weight: 500;
-    } 
+    }
 
     .deals__bgimg a {
         width: 180px;
         height: 45px;
         padding: 8px;
         font-size: 19px;
-        
+
+    }
+
+    .sub__inner {
+        max-width: 540px;
+        padding: 20px;
+    }
+
+    .section__title {
+        font-size: 24px;
     }
 
 
+    .sub .form__input {
+        height: 60px;
+        font-size: 17px;
+        padding-right: 178px;
+        padding-left: 15px;
+    }
 
-}
-
-@media (max-width: 1350px) {
-    .wrapper {
-        border: 5px solid rgb(0, 217, 255);
+    .sub .submit__input {
+        height: 43px;
+        font-size: 16px;
+        padding: 7px 30px;
     }
 
     .deals__bgimg {
@@ -1494,30 +1544,23 @@ input.invalid+span {
         min-height: 480px;
         padding-top: 20px;
     }
-    
+
     .deals__bgimg h2 {
         margin-bottom: 10px;
         font-size: 22px;
     }
-    
+
     .deals__timer {
         max-width: 380px;
         margin: 0 auto 15px;
     }
-    
-    /* .progress-ring__wrapper {
-        position: absolute;
-        top: -1.95px;
-    }
-    */
-    
-    
+
     .timer__item,
     .clock {
         font-size: 18px;
     }
-    
-     .timer__item {
+
+    .timer__item {
         width: 60px;
         height: 60px;
     }
@@ -1535,11 +1578,11 @@ input.invalid+span {
         cy: 31;
         r: 30;
     }
-    
+
     .timer-dscr {
         font-size: 10px;
         font-weight: 500;
-    } 
+    }
 
     .deals__bgimg a {
         width: 144px;
@@ -1547,11 +1590,14 @@ input.invalid+span {
         padding: 3px;
         font-size: 15px;
         font-weight: 600;
-        
+
     }
 
-
-
-
+    .spec__bgimg {
+        max-width: 756px;
+        margin-bottom: -115px;
+    }
 
 }
+
+@media (max-width: 1110px) {}
