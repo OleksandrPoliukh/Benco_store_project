@@ -20,7 +20,7 @@ body {
 
 .wrapper {
     max-width: 1920px;
-    border: 5px solid red;
+    /* border: 5px solid red; */
     margin: 0 auto;
 }
 
@@ -1516,13 +1516,27 @@ input.invalid+span {
 
     }
 
+    .sub__inner {
+        max-width: 540px;
+        padding: 20px;
+    }
+
+    .section__title {
+        font-size: 24px;
+    }
 
 
-}
+    .sub .form__input {
+        height: 60px;
+        font-size: 17px;
+        padding-right: 178px;
+        padding-left: 15px;
+    }
 
-@media (max-width: 1350px) {
-    .wrapper {
-        border: 5px solid rgb(0, 217, 255);
+    .sub .submit__input {
+        height: 43px;
+        font-size: 16px;
+        padding: 7px 30px;
     }
 
     .deals__bgimg {
