@@ -20,7 +20,7 @@ body {
 
 .wrapper {
   max-width: 1920px;
-  border: 5px solid red;
+  /* border: 5px solid red; */
   margin: 0 auto;
 }
 
@@ -1223,7 +1223,7 @@ input.invalid + span {
 
 @media (max-width: 1600px) {
   .wrapper {
-    border: 5px solid green;
+    /* border: 5px solid green; */
   }
 
   .menu__item {
@@ -1337,7 +1337,7 @@ input.invalid + span {
 
 @media (max-width: 1500px) {
   .wrapper {
-    border: 5px solid yellow;
+    /* border: 5px solid yellow; */
   }
 
   .menu__item {
@@ -1447,7 +1447,7 @@ input.invalid + span {
 
 @media (max-width: 1350px) {
   .wrapper {
-    border: 5px solid blue;
+    /* border: 5px solid blue; */
   }
 
   .header__info {
@@ -1763,6 +1763,6 @@ input.invalid + span {
 
 @media (max-width: 1024px) {
   .wrapper {
-    border: 5px solid pink;
+    /* border: 5px solid pink; */
   }
 }
