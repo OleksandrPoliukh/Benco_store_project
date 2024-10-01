@@ -1994,6 +1994,9 @@ input.invalid + span {
     flex-direction: column;
   }
 
+  .header__info-right a {
+    width: 130px;
+  }
   .header__title-right {
     display: none;
   }
@@ -2027,6 +2030,164 @@ input.invalid + span {
 
   .header__content a {
     align-self: center;
+  }
+
+  .about__inner {
+    flex-wrap: wrap;
+  }
+
+  .about__content {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    order: 1;
+  }
+
+  .about__content a {
+    margin: 0;
+    align-self: center;
+  }
+
+  .about__images {
+    order: 2;
+  }
+
+  .product__slider-name {
+    width: 230px;
+  }
+
+  .deals__bgimg {
+    margin: 0;
+    min-height: 300px;
+    padding-top: 5px;
+  }
+
+  .deals__bgimg h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    line-height: 22px;
+  }
+
+  .deals__timer {
+    max-width: 290px;
+    margin-bottom: 5px;
+  }
+
+  .clock {
+    font-size: 12px;
+  }
+
+  .timer__item {
+    width: 40px;
+    height: 40px;
+  }
+  .progress-ring {
+    width: 42px;
+    height: 42px;
+  }
+  .progress-ring__circle-s,
+  .progress-ring__circle-m,
+  .progress-ring__circle-h,
+  .progress-ring__circle-d {
+    cx: 20.5;
+    cy: 21;
+    r: 20;
+  }
+
+  .deals__bgimg a {
+    width: 120px;
+    height: 25px;
+    padding: 0;
+    font-size: 13px;
+    line-height: 23px;
+  }
+
+  /* --> */
+
+  .spec__wrapper {
+    height: 170px;
+  }
+
+  .spec__bgimg {
+    max-width: 500px;
+    margin-bottom: -205px;
+  }
+
+  .spec__img {
+    width: 50px;
+    height: 40px;
+  }
+
+  .spec__item-title {
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .reviews__decor-dotes {
+    opacity: 0.3;
+  }
+
+  .reviews__item {
+    margin: 0 10px;
+  }
+
+  .reviews__item-img img {
+    width: 90px;
+  }
+
+  .reviews__item-text {
+    margin: 30px 0 35px 0;
+    font-size: 11px;
+    padding: 0 10px;
+  }
+
+  .reviews__item-name {
+    font-size: 15px;
+  }
+
+  .reviews__item-role {
+    font-size: 13px;
+  }
+
+  .sub__bgimg {
+    height: 300px;
+  }
+
+  .sub__inner {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 80%;
+    color: white;
+  }
+
+  .section__title {
+    font-size: 19px;
+  }
+
+  .sub__text {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .footer__title {
+    font-size: 17px;
+  }
+
+  .main__footer-right_list li {
+    font-size: 13px;
+  }
+
+  .main__footer-left {
+    max-width: 300px;
+  }
+
+  .main__footer-left_text {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  .final-section__footer {
+    min-height: 40px;
   }
 }
 
